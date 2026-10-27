@@ -21,7 +21,10 @@ BaggageEvent? latestEvent(List<BaggageEvent> events, String baggageId) {
 
 String? transitionError(List<BaggageEvent> history, BaggageEvent event) {
   final latest = latestEvent(history, event.baggageId);
-  // Variante A: comparar con el ultimo evento DEL MISMO equipaje.
+
+  //Bryan Reinosa Herrera: Variante A: Evitar eventos consecutivos repetidos.
+  //Version 1.0  Condicion funciona, revisar bd si si guarda
+
   if (latest != null && latest.type == event.type) {
     return 'No se permiten dos eventos consecutivos del mismo tipo para este equipaje.';
   }
